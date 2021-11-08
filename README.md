@@ -1,3 +1,3 @@
 # Node.js Demo
 
-Static Example Page running on nodejs, data from data.json on folder dev-data
+Example Static Web Page running on nodejs, data on web page from data.json on folder dev-data
