@@ -1,0 +1,14 @@
+{
+  "name": "nds-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Niko Dedy Syarbaini",
+  "license": "ISC",
+  "dependencies": {
+    "slugify": "^1.6.1"
+  }
+}
