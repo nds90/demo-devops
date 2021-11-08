@@ -72,6 +72,6 @@ const webserver = http.createServer((req, res) => {
     }
 });
 
-webserver.listen(8000, '127.0.0.1', () => {
+webserver.listen(8000, '0.0.0.0', () => {
     console.log('Listening to request on port 8000');
 });
