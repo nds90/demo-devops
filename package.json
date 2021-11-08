@@ -1,14 +1,11 @@
 {
   "name": "nds-nodejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node JS on Docker",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Niko Dedy Syarbaini",
-  "license": "ISC",
-  "dependencies": {
-    "slugify": "^1.6.1"
-  }
+  "license": "ISC"
 }
