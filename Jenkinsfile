@@ -19,7 +19,7 @@ pipeline{
         }
         stage('Clone Deployment Manifest'){
             steps{
-                  sh "git clone https://github.com/nds90/deployment-nodefarm.git"
+                  sh "git pull https://github.com/nds90/deployment-nodefarm.git"
                   sh "chmod +x changeTag.sh"
                   sh "./changeTag.sh ${DOCKER_TAG}"
                   sh "git add ."
