@@ -27,7 +27,7 @@ pipeline{
                   sh "git config --global user.email 'niko.syarbaini@sigma.co.id'"
                   sh "git commit -m 'Image Tag Version ${DOCKER_TAG}'"
 //                  withCredentials([string(credentialsId: 'personal-token-github', variable: 'personal-token-github')]) {
-                  sh "git push https://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@github.com/nds90/deployment-nodefarm.git"
+                  sh "git push https://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@github.com/nds90/deployment-nodefarm.git"
 //                }
  //               git branch: 'master', credentialsId: 'login-gitlab-ndsmy', url: 'https://gitlab.nds.my.id/gitops/gitops.git'
  //               sh "chmod +x changeTag.sh"
