@@ -22,7 +22,7 @@ pipeline{
                   git branch: 'main', url: 'https://github.com/nds90/deployment-nodefarm.git'
                   sh "chmod +x changeTag.sh"
                   sh "./changeTag.sh ${DOCKER_TAG}"
-                  sh "cd ../deployment-nodefarm/frontend-manifest/"
+                  sh "cd ../deployment-nodefarm/"
                   sh "git add ."
                   sh "git commit -m 'Image Tag Version ${DOCKER_TAG}'"
                   sh "git push"
