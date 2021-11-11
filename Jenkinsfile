@@ -28,7 +28,7 @@ pipeline{
                   sh "git commit -m 'Image Tag Version ${DOCKER_TAG}'"
 //                  withCredentials([string(credentialsId: 'access-token-github', variable: 'access-token-github')]) {
                   sh "git push https://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@github.com/nds90/deployment-nodefarm.git"
-                }
+//                }
  //               git branch: 'master', credentialsId: 'login-gitlab-ndsmy', url: 'https://gitlab.nds.my.id/gitops/gitops.git'
  //               sh "chmod +x changeTag.sh"
  //               sh "./changeTag.sh ${DOCKER_TAG}"
