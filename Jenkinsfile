@@ -17,8 +17,15 @@ pipeline{
                 }
             }
         }
- //       stage('Change Image Tag'){
- //           steps{
+        stage('Clone Deployment Manifest'){
+            steps{
+                  git branch: 'main', url: 'https://github.com/nds90/deployment-nodefarm.git'
+                  sh "chmod +x changeTag.sh"
+                  sh "./changeTag.sh ${DOCKER_TAG}"
+                  sh "cd ../deployment-nodefarm/frontend-manifest/"
+                  sh "git add ."
+                  sh "git commit -m 'Image Tag Version ${DOCKER_TAG}'"
+                  sh "git push"
  //               git branch: 'master', credentialsId: 'login-gitlab-ndsmy', url: 'https://gitlab.nds.my.id/gitops/gitops.git'
  //               sh "chmod +x changeTag.sh"
  //               sh "./changeTag.sh ${DOCKER_TAG}"
@@ -26,8 +33,8 @@ pipeline{
  //               sh "git config --global user.name 'nds'"
  //               sh "git config --global user.email 'niko.syarbaini@sigma.co.id'"
  //               sh "git commit -am 'Publish new version'"
- //           }
- //       }
+            }
+        }
  //       stage('Push Deploy To Gitlab'){
  //           steps{
  //               withCredentials([usernamePassword(credentialsId: 'login-gitlab-ndsmy', passwordVariable: 'password', usernameVariable: 'username')]) {
