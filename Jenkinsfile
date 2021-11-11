@@ -22,8 +22,9 @@ pipeline{
                   sh "git clone https://github.com/nds90/deployment-nodefarm.git"
                   sh "chmod +x changeTag.sh"
                   sh "./changeTag.sh ${DOCKER_TAG}"
-                  sh "cd ../deployment-nodefarm/"
                   sh "git add ."
+                  sh "git config --global user.name 'nds'"
+                  sh "git config --global user.email 'niko.syarbaini@sigma.co.id'"
                   sh "git commit -m 'Image Tag Version ${DOCKER_TAG}'"
                   sh "git push"
  //               git branch: 'master', credentialsId: 'login-gitlab-ndsmy', url: 'https://gitlab.nds.my.id/gitops/gitops.git'
