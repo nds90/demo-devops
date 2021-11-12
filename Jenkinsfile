@@ -14,8 +14,8 @@ pipeline{
         
         stage('Push Image DockerHub'){
             steps{
-                    sh ('docker login -u nds90 --password-stdin < $PASS_DOCKERHUB')
-                    sh "docker push nds90/nodefarm-image:${DOCKER_TAG}"
+                sh ('echo $PASS_DOCKERHUB | docker login -u nds90 --password-stdin')
+                sh "docker push nds90/nodefarm-image:${DOCKER_TAG}"
             }
         }
 
