@@ -2,6 +2,8 @@ pipeline{
     agent any
     environment{
         DOCKER_TAG = getDockerTag()
+        TOKEN_GITHUB = credentials('githubToken')
+        PASS_DOCKERHUB = credentials('dockerhub')
     }
     stages{
         stage('Build Docker Image'){
@@ -12,10 +14,8 @@ pipeline{
         
         stage('Push Image DockerHub'){
             steps{
-                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerHubPass')]) {
-                    sh "docker login -u nds90 -p ${dockerHubPass}"
+                    sh "docker login -u nds90 -p $PASS_DOCKERHUB"
                     sh "docker push nds90/nodefarm-image:${DOCKER_TAG}"
-                }
             }
         }
 
@@ -33,9 +33,7 @@ pipeline{
 
         stage('Push to Repo deployment-nodefarm'){
             steps{
-                  withCredentials([string(credentialsId: 'githubToken', variable: 'githubToken')]) {
-                  sh "git push https://${githubToken}@github.com/nds90/deployment-nodefarm.git"
-                }
+                  sh ('git push https://$TOKEN_GITHUB@github.com/nds90/deployment-nodefarm.git')
             }
         }
     }
@@ -46,8 +44,7 @@ def getDockerTag(){
     return tag
 }
 
-
-        //               git branch: 'master', credentialsId: 'login-gitlab-ndsmy', url: 'https://gitlab.nds.my.id/gitops/gitops.git'
+ //               git branch: 'master', credentialsId: 'login-gitlab-ndsmy', url: 'https://gitlab.nds.my.id/gitops/gitops.git'
  //               sh "chmod +x changeTag.sh"
  //               sh "./changeTag.sh ${DOCKER_TAG}"
  //               sh "git add ."
